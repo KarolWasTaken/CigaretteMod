@@ -1,15 +1,18 @@
 package net.karoll.cigarettemod.StatusEffects;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.karoll.cigarettemod.CigaretteMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class PotionCool extends Potion {
 
-    private static final ResourceLocation potionIcons = new ResourceLocation(CigaretteMod.MODID, "textures/gui/cool_potion_icon.png");
+    private static final ResourceLocation potionIcons = new ResourceLocation(
+        CigaretteMod.MODID,
+        "textures/gui/cool_potion_icon.png");
 
     public PotionCool(int id, boolean isBadEffect, int liquidColor) {
         super(id, isBadEffect, liquidColor);
@@ -18,7 +21,9 @@ public class PotionCool extends Potion {
 
     @Override
     public int getStatusIconIndex() {
-        Minecraft.getMinecraft().getTextureManager().bindTexture(potionIcons);
+        Minecraft.getMinecraft()
+            .getTextureManager()
+            .bindTexture(potionIcons);
         return super.getStatusIconIndex();
     }
 

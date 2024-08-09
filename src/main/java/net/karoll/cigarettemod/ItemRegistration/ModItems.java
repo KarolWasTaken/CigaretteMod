@@ -10,10 +10,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.item.ItemStack;
-
-import static gregtech.api.enums.Mods.SpiceOfLife;
-import static gregtech.api.util.GT_ModHandler.getModItem;
 
 public class ModItems {
 
@@ -81,7 +77,6 @@ public class ModItems {
             .setTextureName(basic_filter.GetTextureName())
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(filter, "filter");
-
 
         // cogarette butts
         crudeCigaretteButt = new CigaretteButtBase(ItemTiers.Tier.crude);

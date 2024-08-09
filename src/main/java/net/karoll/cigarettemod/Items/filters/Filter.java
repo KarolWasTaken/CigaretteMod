@@ -11,15 +11,13 @@ public class Filter extends Item {
     public Filter(ItemTiers.Tier tier) {
         Tier = tier;
     }
+
     public String GetTextureName() {
-        if(Tier == ItemTiers.Tier.crude) {
+        if (Tier == ItemTiers.Tier.crude) {
             return CigaretteMod.MODID + ":filter_crude";
-        }
-        else {
+        } else {
             return CigaretteMod.MODID + ":filter_basic";
         }
     }
-
-
 
 }

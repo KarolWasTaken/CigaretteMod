@@ -1,14 +1,14 @@
 package net.karoll.cigarettemod.Items.cigarettes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.karoll.cigarettemod.CigaretteMod;
 import net.karoll.cigarettemod.Items.ItemTiers;
 import net.minecraft.item.Item;
 
-import java.security.PrivateKey;
-import java.util.HashMap;
-import java.util.Map;
-
 public class CigaretteButtBase extends Item {
+
     public ItemTiers.Tier Tier;
     private int _cigaretteType;
 
@@ -23,9 +23,9 @@ public class CigaretteButtBase extends Item {
         _cigaretteType = _tierToCigaretteType.get(Tier);
         this.setMaxStackSize(16);
     }
-    public String GetTextureLocation()
-    {
-        return CigaretteMod.MODID+":cigarette_used_"+_cigaretteType;
+
+    public String GetTextureLocation() {
+        return CigaretteMod.MODID + ":cigarette_used_" + _cigaretteType;
     }
 
 }

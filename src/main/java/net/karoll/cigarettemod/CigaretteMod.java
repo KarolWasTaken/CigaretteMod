@@ -1,11 +1,10 @@
 package net.karoll.cigarettemod;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.karoll.cigarettemod.ItemRegistration.ItemCrafting;
 import net.karoll.cigarettemod.ItemRegistration.ModBlocks;
 import net.karoll.cigarettemod.ItemRegistration.ModItems;
+import net.karoll.cigarettemod.ItemRegistration.ModPotions;
 
-import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,11 +14,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.karoll.cigarettemod.ItemRegistration.ModPotions;
-
-import static gregtech.api.enums.Mods.SpiceOfLife;
-import static gregtech.api.util.GT_ModHandler.getModItem;
-
 
 @Mod(modid = CigaretteMod.MODID, version = Tags.VERSION, name = "CigaretteMod", acceptedMinecraftVersions = "[1.7.10]")
 public class CigaretteMod {
@@ -60,5 +54,4 @@ public class CigaretteMod {
         proxy.serverStarting(event);
     }
 
-    
 }
