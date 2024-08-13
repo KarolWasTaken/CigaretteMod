@@ -17,12 +17,19 @@ public class ModItems {
     public static Item tobaccoSeeds;
     public static Item tobacco;
     public static Item driedTobacco;
-    public static Item cutDriedTobacco;
+    public static Item mincedDriedTobacco;
 
+    // filter parts
     public static Item celluloseAcetate;
     public static Item tow;
     public static Item filterRod;
     public static Item filter;
+
+    // cig paper parts
+    public static Item celluloseAcetateSheetWet;
+    public static Item celluloseAcetateSheetDry;
+    public static Item celluloseAcetateSheetCoated;
+    public static Item cigarettePaper;
     public static Item cigaretteCase;
 
     public static CigaretteBase crudeCigarette;
@@ -46,39 +53,54 @@ public class ModItems {
             .setTextureName(CigaretteMod.MODID + ":tobacco")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(tobacco, "tobacco");
-
         driedTobacco = new Item().setUnlocalizedName("driedTobacco")
             .setTextureName(CigaretteMod.MODID + ":dried_tobacco")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(driedTobacco, "driedTobacco");
-
-        cutDriedTobacco = new Item().setUnlocalizedName("cutDriedTobacco")
-            .setTextureName(CigaretteMod.MODID + ":cut_dried_tobacco")
+        mincedDriedTobacco = new Item().setUnlocalizedName("mincedDriedTobacco")
+            .setTextureName(CigaretteMod.MODID + ":minced_dried_tobacco")
             .setCreativeTab(CreativeTabs.tabMisc);
-        GameRegistry.registerItem(cutDriedTobacco, "cutDriedTobacco");
+        GameRegistry.registerItem(mincedDriedTobacco, "mincedDriedTobacco");
 
+        // filter items
         celluloseAcetate = new Item().setUnlocalizedName("celluloseAcetate")
             .setTextureName(CigaretteMod.MODID + ":cellulose_acetate")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(celluloseAcetate, "celluloseAcetate");
-
         tow = new Item().setUnlocalizedName("tow")
             .setTextureName(CigaretteMod.MODID + ":tow")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(tow, "tow");
-
         filterRod = new Item().setUnlocalizedName("filterRod")
             .setTextureName(CigaretteMod.MODID + ":filter_rod")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(filterRod, "filterRod");
-
         Filter basic_filter = new Filter(ItemTiers.Tier.basic);
         filter = basic_filter.setUnlocalizedName("filter")
             .setTextureName(basic_filter.GetTextureName())
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(filter, "filter");
 
-        // cogarette butts
+        // cigarette paper items
+        celluloseAcetateSheetWet = new Item().setUnlocalizedName("celluloseAcetateSheetWet")
+            .setTextureName(CigaretteMod.MODID + ":cellulose_acetate_sheet_wet")
+            .setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(celluloseAcetateSheetWet, "celluloseAcetateSheetWet");
+        celluloseAcetateSheetDry = new Item().setUnlocalizedName("celluloseAcetateSheetDry")
+            .setTextureName(CigaretteMod.MODID + ":cellulose_acetate_sheet_dry")
+            .setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(celluloseAcetateSheetDry, "celluloseAcetateSheetDry");
+        celluloseAcetateSheetCoated = new Item().setUnlocalizedName("celluloseAcetateSheetCoated")
+            .setTextureName(CigaretteMod.MODID + ":cellulose_acetate_sheet_coated")
+            .setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(celluloseAcetateSheetCoated, "celluloseAcetateSheetCoated");
+
+        cigarettePaper = new Item().setUnlocalizedName("cigarettePaper")
+            .setTextureName(CigaretteMod.MODID + ":paper_cigarette")
+            .setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(cigarettePaper, "cigarettePaper");
+
+        // cigarette butts
         crudeCigaretteButt = new CigaretteButtBase(ItemTiers.Tier.crude);
         basicCigaretteButt = new CigaretteButtBase(ItemTiers.Tier.basic);
         mediocreCigaretteButt = new CigaretteButtBase(ItemTiers.Tier.mediocre);
@@ -90,22 +112,22 @@ public class ModItems {
         finestCigarette = new CigaretteBase(ItemTiers.Tier.finest);
 
         crudeCigarette.setUnlocalizedName("crudeCigarette")
-            .setTextureName(CigaretteMod.MODID + ":cigarette_crude")
+            .setTextureName(CigaretteMod.MODID + ":cigarette_crude_unlit")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(crudeCigarette, "crudeCigarette");
 
         basicCigarette.setUnlocalizedName("basicCigarette")
-            .setTextureName(CigaretteMod.MODID + ":cigarette_basic")
+            .setTextureName(CigaretteMod.MODID + ":cigarette_basic_unlit")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(basicCigarette, "basicCigarette");
 
         mediocreCigarette.setUnlocalizedName("mediocreCigarette")
-            .setTextureName(CigaretteMod.MODID + ":cigarette_mediocre")
+            .setTextureName(CigaretteMod.MODID + ":cigarette_mediocre_unlit")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(mediocreCigarette, "mediocreCigarette");
 
         finestCigarette.setUnlocalizedName("finestCigarette")
-            .setTextureName(CigaretteMod.MODID + ":cigarette_finest")
+            .setTextureName(CigaretteMod.MODID + ":cigarette_finest_unlit")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(finestCigarette, "finestCigarette");
 

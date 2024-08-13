@@ -1,8 +1,11 @@
 package net.karoll.cigarettemod.ItemRegistration;
 
+import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.recipe.RecipeMaps.*;
+import static gregtech.api.util.GT_ModHandler.getModItem;
 import static gregtech.api.util.GT_RecipeBuilder.SECONDS;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
@@ -33,8 +36,12 @@ public class ItemCrafting {
          * 'T', driedTobaccoStack
          * ));
          */
+        // cut and minced tobacco
         GameRegistry.addRecipe(
-            new ShapelessOreRecipe(new ItemStack(ModItems.cutDriedTobacco, 5), craftingToolKnife, driedTobaccoStack));
+            new ShapelessOreRecipe(
+                new ItemStack(ModItems.mincedDriedTobacco, 1),
+                craftingToolKnife,
+                driedTobaccoStack));
 
         // macerator recipe
         /*
@@ -55,12 +62,17 @@ public class ItemCrafting {
             .addTo(extruderRecipes);
 
         // making tow
-        GT_Values.RA.stdBuilder()
-            .itemInputs(new ItemStack(ModItems.celluloseAcetate, 5))
-            .itemOutputs(new ItemStack(ModItems.tow, 1))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(compressorRecipes);
+        /*
+         * GT_Values.RA.stdBuilder()
+         * .itemInputs(new ItemStack(ModItems.celluloseAcetate, 5))
+         * .itemOutputs(new ItemStack(ModItems.tow, 1))
+         * .duration(20 * SECONDS)
+         * .eut(TierEU.RECIPE_LV)
+         * .addTo(compressorRecipes);
+         */
+        GameRegistry.addRecipe(
+            new ItemStack(ModItems.tow, 1),
+            new Object[] { "CCC", "CCC", "CCC", 'C', ModItems.celluloseAcetate, });
 
         // making filter rod
         GT_Values.RA.stdBuilder()
@@ -73,6 +85,44 @@ public class ItemCrafting {
         // making filters
         ItemStack filterRod = new ItemStack(ModItems.filterRod, 1);
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.filter, 3), craftingToolKnife, filterRod));
+
+        // making cigarette paper
+        // celluloseacetate -[compressor]-> wet cellulose acetate sheet
+        // wet cellulose acetate sheet -[dryrack]-> cellulose acetate sheet
+        // cellulose acetate sheet + sticky resin -[crafting]-> coated cellulose acetate sheet
+        // coated cellulose acetate sheet + knife -[crafting]-> cigarette paper
+        GT_Values.RA.stdBuilder()
+            .itemInputs(new ItemStack(ModItems.celluloseAcetate, 5))
+            .itemOutputs(new ItemStack(ModItems.celluloseAcetateSheetWet, 1))
+            .duration(20 * SECONDS)
+            .eut(TierEU.RECIPE_LV)
+            .addTo(compressorRecipes);
+        DryingRackRecipes.addDryingRecipe(ModItems.celluloseAcetateSheetWet, 600, ModItems.celluloseAcetateSheetDry);
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                new ItemStack(ModItems.celluloseAcetateSheetCoated, 1),
+                getModItem(IndustrialCraft2.ID, "itemHarz", 1).getItem(),
+                new ItemStack(ModItems.celluloseAcetateSheetDry)));
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                new ItemStack(ModItems.cigarettePaper, 3),
+                craftingToolKnife,
+                new ItemStack(ModItems.celluloseAcetateSheetCoated, 1)));
+
+        // making crude cig
+        GameRegistry.addRecipe(
+            new ItemStack(ModItems.crudeCigarette, 1),
+            new Object[] { "PPP", "MMP", "PPP", 'P', Items.paper, 'M', ModItems.mincedDriedTobacco });
+        // making a basic cig
+        GameRegistry.addRecipe(
+            new ItemStack(ModItems.basicCigarette, 1),
+            new Object[] { "PPP", "MMF", "PPP", 'P', Items.paper, 'M', ModItems.mincedDriedTobacco, 'F',
+                ModItems.filter });
+        // making a mediocre cig
+        GameRegistry.addRecipe(
+            new ItemStack(ModItems.mediocreCigarette, 1),
+            new Object[] { "CCC", "MMF", "CCC", 'C', ModItems.cigarettePaper, 'M', ModItems.mincedDriedTobacco, 'F',
+                ModItems.filter });
 
         // cig box
         /*

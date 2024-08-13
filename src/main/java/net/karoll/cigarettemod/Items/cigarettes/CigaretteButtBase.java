@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 public class CigaretteButtBase extends Item {
 
     public ItemTiers.Tier Tier;
-    private int _cigaretteType;
+    private final int _cigaretteType;
 
     public CigaretteButtBase(ItemTiers.Tier tier) {
         Tier = tier;
