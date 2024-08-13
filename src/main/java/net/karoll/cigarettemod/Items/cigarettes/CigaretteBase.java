@@ -44,9 +44,29 @@ public class CigaretteBase extends Item {
 
         this._coolStatusEffectDuration = getCoolStatusEffectDuration(tier);
         this._cigaretteButt = getCigaretteButt(tier);
+        setMaxDamage(tier);
         this.setMaxStackSize(1);
     }
 
+    private void setMaxDamage(ItemTiers.Tier tier) {
+        switch (tier) {
+            case crude:
+                this.setMaxDamage(1);
+                break;
+            case basic:
+                this.setMaxDamage(3);
+                break;
+            case mediocre:
+                this.setMaxDamage(5);
+                break;
+            case finest:
+                this.setMaxDamage(7);
+                break;
+            default:
+                this.setMaxDamage(0);
+                break;
+        }
+    }
     private int getCoolStatusEffectDuration(ItemTiers.Tier tier) {
         switch (tier) {
             case crude:
@@ -61,7 +81,6 @@ public class CigaretteBase extends Item {
                 return 0;
         }
     }
-
     private CigaretteButtBase getCigaretteButt(ItemTiers.Tier tier) {
         switch (tier) {
             case crude:
@@ -156,8 +175,7 @@ public class CigaretteBase extends Item {
         spawnSmokeParticles(player, worldIn);
         applyCoolStatusEffect(player);
 
-        itemStackIn.damageItem(1, player);
-        return handleCigaretteDamage(itemStackIn, player);
+        return handleCigaretteDamage(itemStackIn, worldIn, player);
     }
 
     private int findLighter(EntityPlayer player) {
@@ -257,14 +275,15 @@ public class CigaretteBase extends Item {
             new PotionEffect(ModPotions.PotionIDConverter.get("coolPotion"), _coolStatusEffectDuration, 0));
     }
 
-    private ItemStack handleCigaretteDamage(ItemStack itemStackIn, EntityPlayer player) {
+    private ItemStack handleCigaretteDamage(ItemStack itemStackIn, World worldIn, EntityPlayer player) {
+        itemStackIn.damageItem(1, player);
         if (itemStackIn.getItemDamage() == itemStackIn.getMaxDamage()) {
             ItemStack newStack = new ItemStack(_cigaretteButt, 1);
             player.inventory.setInventorySlotContents(player.inventory.currentItem, newStack);
             player.inventory.markDirty();
             return newStack;
         }
-        return itemStackIn;
+        return super.onItemRightClick(itemStackIn, worldIn, player);
     }
 
     private Map<String, Double> getOffsetInfrontofPlayerFace(EntityPlayer player) {
