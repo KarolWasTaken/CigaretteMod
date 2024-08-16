@@ -67,6 +67,7 @@ public class CigaretteBase extends Item {
                 break;
         }
     }
+
     private int getCoolStatusEffectDuration(ItemTiers.Tier tier) {
         switch (tier) {
             case crude:
@@ -81,6 +82,7 @@ public class CigaretteBase extends Item {
                 return 0;
         }
     }
+
     private CigaretteButtBase getCigaretteButt(ItemTiers.Tier tier) {
         switch (tier) {
             case crude:

@@ -2,9 +2,7 @@ package net.karoll.cigarettemod.StatusEffects;
 
 import net.karoll.cigarettemod.CigaretteMod;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PotionCool extends Potion {
 
     private static final ResourceLocation potionIcons = new ResourceLocation(
-        CigaretteMod.MODID+":textures/gui/cool_potion_icon.png");
+        CigaretteMod.MODID + ":textures/gui/cool_potion_icon.png");
 
     public PotionCool(int id, boolean isBadEffect, int liquidColor) {
         super(id, isBadEffect, liquidColor);

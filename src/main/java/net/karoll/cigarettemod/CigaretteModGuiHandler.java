@@ -1,6 +1,5 @@
 package net.karoll.cigarettemod;
 
-import net.karoll.cigarettemod.Items.CigaretteCase.TileEntityCigaretteCase;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ContainerChest;
@@ -19,7 +18,7 @@ public class CigaretteModGuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == References.CIGARETTECASE_GUI_ID) {
-            //return new ContainerCigaretteCase(player.inventory, cigaretteCaseInventory);
+            // return new ContainerCigaretteCase(player.inventory, cigaretteCaseInventory);
             return new ContainerChest(player.inventory, cigaretteCaseInventory);
 
         }

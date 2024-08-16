@@ -1,9 +1,9 @@
 package net.karoll.cigarettemod;
 
+import net.karoll.cigarettemod.ItemRegistration.ItemCrafting;
 import net.karoll.cigarettemod.ItemRegistration.ModBlocks;
 import net.karoll.cigarettemod.ItemRegistration.ModItems;
 import net.karoll.cigarettemod.ItemRegistration.ModPotions;
-import net.karoll.cigarettemod.ItemRegistration.ItemCrafting;
 import net.karoll.cigarettemod.Items.CigaretteCase.TileEntityCigaretteCase;
 
 import org.apache.logging.log4j.LogManager;

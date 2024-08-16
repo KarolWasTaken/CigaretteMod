@@ -8,9 +8,9 @@ import net.minecraft.world.World;
 
 public class CigaretteCase extends Item {
 
-     public CigaretteCase(){
+    public CigaretteCase() {
         this.setMaxStackSize(1);
-     }
+    }
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {

@@ -156,7 +156,7 @@ public class ModItems {
 
         cigaretteCase = new CigaretteCase();
         cigaretteCase.setUnlocalizedName("cigaretteCase")
-            .setTextureName(CigaretteMod.MODID+":cigarette_basic_inhand")
+            .setTextureName(CigaretteMod.MODID + ":cigarette_basic_inhand")
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(cigaretteCase, "cigaretteCase");
 

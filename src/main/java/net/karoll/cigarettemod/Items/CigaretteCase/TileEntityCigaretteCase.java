@@ -9,7 +9,6 @@ public class TileEntityCigaretteCase extends TileEntity implements IInventory {
 
     private ItemStack[] inventory = new ItemStack[18]; // Example size
 
-
     // do later
     // private String uniqueID;
     // public TileEntityCigaretteCase() {
