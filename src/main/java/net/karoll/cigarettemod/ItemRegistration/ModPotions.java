@@ -2,6 +2,7 @@ package net.karoll.cigarettemod.ItemRegistration;
 
 import java.util.HashMap;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.karoll.cigarettemod.StatusEffects.PotionCool;
 import net.minecraft.potion.Potion;
 

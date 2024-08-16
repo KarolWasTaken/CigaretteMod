@@ -1,6 +1,7 @@
 package net.karoll.cigarettemod.ItemRegistration;
 
 import net.karoll.cigarettemod.CigaretteMod;
+import net.karoll.cigarettemod.Items.CigaretteCase.CigaretteCase;
 import net.karoll.cigarettemod.Items.ItemTiers;
 import net.karoll.cigarettemod.Items.TobaccoSeeds;
 import net.karoll.cigarettemod.Items.cigarettes.CigaretteBase;
@@ -30,7 +31,6 @@ public class ModItems {
     public static Item celluloseAcetateSheetDry;
     public static Item celluloseAcetateSheetCoated;
     public static Item cigarettePaper;
-    public static Item cigaretteCase;
 
     public static CigaretteBase crudeCigarette;
     public static CigaretteBase basicCigarette;
@@ -40,6 +40,8 @@ public class ModItems {
     public static CigaretteButtBase basicCigaretteButt;
     public static CigaretteButtBase mediocreCigaretteButt;
     public static CigaretteButtBase finestCigaretteButt;
+
+    public static CigaretteCase cigaretteCase;
 
     // Initialize and register items
     public static void init() {
@@ -151,6 +153,12 @@ public class ModItems {
             .setTextureName(finestCigaretteButt.GetTextureLocation())
             .setCreativeTab(CreativeTabs.tabMisc);
         GameRegistry.registerItem(finestCigaretteButt, "finestCigaretteButt");
+
+        cigaretteCase = new CigaretteCase();
+        cigaretteCase.setUnlocalizedName("cigaretteCase")
+            .setTextureName(CigaretteMod.MODID+":cigarette_basic_inhand")
+            .setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(cigaretteCase, "cigaretteCase");
 
     }
 

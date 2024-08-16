@@ -1,9 +1,10 @@
 package net.karoll.cigarettemod;
 
-import net.karoll.cigarettemod.ItemRegistration.ItemCrafting;
 import net.karoll.cigarettemod.ItemRegistration.ModBlocks;
 import net.karoll.cigarettemod.ItemRegistration.ModItems;
 import net.karoll.cigarettemod.ItemRegistration.ModPotions;
+import net.karoll.cigarettemod.ItemRegistration.ItemCrafting;
+import net.karoll.cigarettemod.Items.CigaretteCase.TileEntityCigaretteCase;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,12 +15,17 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = CigaretteMod.MODID, version = Tags.VERSION, name = "CigaretteMod", acceptedMinecraftVersions = "[1.7.10]")
 public class CigaretteMod {
 
     public static final String MODID = "cigarettemod";
     public static final Logger LOG = LogManager.getLogger(MODID);
+
+    @Mod.Instance(CigaretteMod.MODID)
+    public static CigaretteMod instance;
 
     @SidedProxy(clientSide = "net.karoll.cigarettemod.ClientProxy", serverSide = "net.karoll.cigarettemod.CommonProxy")
     public static CommonProxy proxy;
@@ -30,6 +36,7 @@ public class CigaretteMod {
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
 
+        GameRegistry.registerTileEntity(TileEntityCigaretteCase.class, "cigaretteCase");
         ModPotions.init();
         ModBlocks.init();
         ModItems.init();
@@ -40,6 +47,9 @@ public class CigaretteMod {
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
         ItemCrafting.init();
+
+        // Register the GUI handle
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new CigaretteModGuiHandler());
     }
 
     @Mod.EventHandler
@@ -52,6 +62,8 @@ public class CigaretteMod {
     // register server commands in this event handler (Remove if not needed)
     public void serverStarting(FMLServerStartingEvent event) {
         proxy.serverStarting(event);
-    }
 
+        // comment out when not debugging
+        event.registerServerCommand(new DebugCommands());
+    }
 }
