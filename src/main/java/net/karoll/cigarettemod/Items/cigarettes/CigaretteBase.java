@@ -168,8 +168,19 @@ public class CigaretteBase extends Item {
         boolean isPlatinum = isLighterPlatinum(player.inventory.mainInventory[lighterIndex]);
         updateLighterStates(isPlatinum);
 
-        // decrease lighter fuel
+        // get lighter item
         ItemStack lighterItemStack = player.inventory.mainInventory[lighterIndex];
+        // check how new fuel amount will look
+        long newFuelAmount = isFullLighter(lighterItemStack) ? (isPlatinum ? 999L : 99L)
+            : getLighterFuel(lighterItemStack) - 1;
+        // if lighter has ran out of fuel, dont do anything
+        if(Long.signum(newFuelAmount) <= 0)
+        {
+            updateLighterStates(isPlatinum);
+            return super.onItemRightClick(itemStackIn, worldIn, player);
+        }
+
+        // decrease lighter fuel
         handleLighterFuel(lighterItemStack, isPlatinum);
 
         // set NBT as lit

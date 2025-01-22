@@ -1,9 +1,12 @@
 package net.karoll.cigarettemod;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.karoll.cigarettemod.handlers.EventHandler;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy {
 
@@ -12,7 +15,12 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
-        CigaretteMod.LOG.info(Config.greeting);
+        // register event handler
+        EventHandler eventHandler = new EventHandler();
+        FMLCommonHandler.instance().bus().register(eventHandler);
+        MinecraftForge.EVENT_BUS.register(eventHandler);
+
+        //CigaretteMod.LOG.info(Config.greeting);
         CigaretteMod.LOG.info("I am MyMod at version " + Tags.VERSION);
     }
 

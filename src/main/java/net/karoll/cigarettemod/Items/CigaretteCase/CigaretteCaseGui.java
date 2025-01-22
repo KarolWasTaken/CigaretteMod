@@ -16,7 +16,7 @@ public class CigaretteCaseGui extends GuiContainer {
     private int inventoryRows;
 
     public CigaretteCaseGui(IInventory playerInven, IInventory CigCase) {
-        super(new ContainerChest(playerInven, CigCase));
+        super(new CigaretteCaseContainer(playerInven, CigCase));
         this.PlayerInventory = playerInven;
         this.CigaretteCaseInventory = CigCase;
         this.allowUserInput = false;

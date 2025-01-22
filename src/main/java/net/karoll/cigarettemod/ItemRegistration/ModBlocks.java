@@ -11,7 +11,7 @@ public class ModBlocks {
 
     public static void init() {
         tobaccoPlant = new TobaccoPlant().setBlockName("tobaccoPlant")
-            .setBlockTextureName("cigarettemod:wheat");
+            .setBlockTextureName("cigarettemod:tobacco");
 
         GameRegistry.registerBlock(tobaccoPlant, "tobaccoPlant");
     }
